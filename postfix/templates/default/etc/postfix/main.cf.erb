@@ -696,6 +696,12 @@ sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
+
+# sender rewriting scheme
+sender_canonical_maps = tcp:127.0.0.1:10001
+sender_canonical_classes = envelope_sender
+recipient_canonical_maps = tcp:127.0.0.1:10002
+recipient_canonical_classes= envelope_recipient,header_recipient
 <%- end %>
 smtp_tls_security_level = encrypt
 smtp_tls_mandatory_ciphers = high

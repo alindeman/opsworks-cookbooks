@@ -15,3 +15,7 @@ end
 describe service("saslauthd") do
   it { is_expected.to be_running }
 end
+
+describe service("postsrsd") do
+  it { is_expected.to be_running }
+end
