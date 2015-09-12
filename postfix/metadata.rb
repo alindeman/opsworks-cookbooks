@@ -1,0 +1,7 @@
+name 'postfix'
+maintainer 'Andy Lindeman'
+maintainer_email 'andy@lindeman.io'
+license 'MIT'
+description 'Installs/Configures postfix'
+long_description 'Installs/Configures postfix'
+version '0.1.0'
