@@ -85,18 +85,18 @@ template "/etc/postfix/master.cf" do
   notifies :restart, "service[postfix]"
 end
 
-template "/etc/postfix/smtp_header_checks" do
+template "/etc/postfix/header_checks" do
   owner "root"
   group "root"
   mode "0644"
-  source "etc/postfix/smtp_header_checks.erb"
+  source "etc/postfix/header_checks.erb"
 
   notifies :run, "execute[refresh smtp header hash table]", :immediately
 end
 
 execute "refresh smtp header hash table" do
   action :nothing
-  command "postmap /etc/postfix/smtp_header_checks"
+  command "postmap /etc/postfix/header_checks"
 end
 
 template "/etc/postfix/sasl_passwd" do

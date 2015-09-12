@@ -32,6 +32,7 @@ submission inet n       -       -       -       -       smtpd
   -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject_unauth_destination
   -o smtpd_relay_restrictions=permit_sasl_authenticated,reject_unauth_destination
   -o milter_macro_daemon_name=ORIGINATING
+  -o cleanup_service_name=submission_cleanup
   -o message_size_limit=<%= @outgoing_message_size_limit %>
 <%- end %>
 #smtps     inet  n       -       -       -       -       smtpd
@@ -130,3 +131,6 @@ scalemail-backend unix	-	n	n	-	2	pipe
 mailman   unix  -       n       n       -       -       pipe
   flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
   ${nexthop} ${user}
+
+submission_cleanup unix  n       -       -       -       0       cleanup
+  -o header_checks=regexp:/etc/postfix/header_checks
