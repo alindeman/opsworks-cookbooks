@@ -1,0 +1,3 @@
+<%- @aliases.each do |name, destination| %>
+<%= name %>: <%= Array(destination).join(",") %>
+<%- end %>

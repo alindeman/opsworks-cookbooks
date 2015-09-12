@@ -2,4 +2,8 @@
 # Cookbook Name:: postfix
 # Recipe:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright (c) 2015 Andy Lindeman.
+
+include_recipe "postfix::install"
+include_recipe "postfix::configure"
+include_recipe "postfix::service"

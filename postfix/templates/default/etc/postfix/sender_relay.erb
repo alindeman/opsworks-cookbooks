@@ -1,0 +1,5 @@
+<%- if @relay %>
+<%- @destinations.each do |destination| %> 
+@<%= destination %> <%= @relay %>
+<%- end %>
+<%- end %>
