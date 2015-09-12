@@ -1,0 +1,7 @@
+name 'users'
+maintainer 'Andy Lindeman'
+maintainer_email 'andy@lindeman.io'
+license 'MIT'
+description 'Installs/Configures users'
+long_description 'Installs/Configures users'
+version '0.1.0'

@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[users::default]
+    attributes:
+      users:
+        users:
+          alindeman:
+            password: "$6$npaqzCrG4$rM9eFcGy/m2L4qMPy2yUGH7x4sSNiJqA5Di23JkGItySPACGU7ee8ivTIhONGT6tSr.1nIepDALiGFd8pg5P70"
