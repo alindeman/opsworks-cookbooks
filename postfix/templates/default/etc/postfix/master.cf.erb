@@ -26,8 +26,7 @@ submission inet n       -       -       -       -       smtpd
   -o smtpd_tls_mandatory_ciphers=high
   -o tls_preempt_cipherlist=yes
   -o smtpd_sasl_auth_enable=yes
-  -o smtpd_sasl_type=dovecot
-  -o smtpd_sasl_path=private/auth
+  -o smtpd_sasl_security_options=noanonymous
   -o smtpd_reject_unlisted_recipient=no
   -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject_unauth_destination
   -o smtpd_relay_restrictions=permit_sasl_authenticated,reject_unauth_destination
