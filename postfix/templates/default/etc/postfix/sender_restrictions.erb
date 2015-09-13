@@ -1,0 +1,5 @@
+<%- if @relay %>
+<%- @destinations.each do |destination| %>
+<%= destination %> REJECT Use port 587 with a username and password instead
+<%- end %>
+<%- end %>

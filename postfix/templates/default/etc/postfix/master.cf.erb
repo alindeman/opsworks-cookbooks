@@ -12,6 +12,7 @@
 smtp      inet  n       -       -       -       -       smtpd
   -o smtpd_tls_security_level=may
   -o smtpd_tls_ciphers=export
+  -o smtpd_sender_restrictions=check_sender_access,hash:/etc/postfix/sender_restrictions
   -o smtpd_recipient_restrictions=permit_mynetworks,reject_unauth_destination
   -o smtpd_relay_restrictions=permit_mynetworks,reject_unauth_destination
   -o message_size_limit=<%= @incoming_message_size_limit %>

@@ -143,6 +143,24 @@ execute "refresh sender_relay hash table" do
   command "postmap /etc/postfix/sender_relay"
 end
 
+template "/etc/postfix/sender_restrictions" do
+  owner "root"
+  group "root"
+  mode "0644"
+  source "etc/postfix/sender_restrictions.erb"
+
+  variables \
+    destinations: node["postfix"]["destinations"],
+    relay:        node["postfix"]["relay"]
+
+  notifies :run, "execute[refresh sender_restrictions hash table]", :immediately
+end
+
+execute "refresh sender_restrictions hash table" do
+  action :nothing
+  command "postmap /etc/postfix/sender_restrictions"
+end
+
 template "/etc/aliases" do
   owner "root"
   group "root"
