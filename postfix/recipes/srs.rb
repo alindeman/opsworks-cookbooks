@@ -31,4 +31,5 @@ end
 
 service "postsrsd" do
   action [:enable, :start]
+  provider Chef::Provider::Service::Upstart
 end
