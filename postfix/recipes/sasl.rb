@@ -13,8 +13,16 @@ template "/etc/default/saslauthd" do
   group "root"
   mode "0644"
   source "etc/default/saslauthd.erb"
+
+  notifies :restart, "service[saslauthd]"
 end
 
 service "saslauthd" do
   action [:enable, :start]
+end
+
+group "sasl" do
+  action :modify
+  append true
+  members ['postfix']
 end

@@ -54,7 +54,6 @@ template "/etc/postfix/main.cf" do
   owner "root"
   group "root"
   mode "0644"
-  cookbook "postfix"
   source "etc/postfix/main.cf.erb"
 
   variables \
@@ -74,13 +73,21 @@ template "/etc/postfix/master.cf" do
   owner "root"
   group "root"
   mode "0644"
-  cookbook "postfix"
   source "etc/postfix/master.cf.erb"
 
   variables \
     incoming_message_size_limit:  node["postfix"]["incoming_message_size_limit"],
     outgoing_message_size_limit:  node["postfix"]["outgoing_message_size_limit"],
     submission:                   node["postfix"]["submission"]
+
+  notifies :restart, "service[postfix]"
+end
+
+template "/etc/postfix/sasl/smtpd.conf" do
+  owner "root"
+  group "root"
+  mode "0644"
+  source "etc/postfix/sasl/smtpd.conf.erb"
 
   notifies :restart, "service[postfix]"
 end
@@ -140,7 +147,6 @@ template "/etc/aliases" do
   owner "root"
   group "root"
   mode "0644"
-  cookbook "postfix"
   source "etc/aliases.erb"
 
   variables \
