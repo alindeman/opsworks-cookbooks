@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2015 Andy Lindeman.
 
-package 'ruby-shadow'
+chef_gem 'ruby-shadow'
 
 node['users']['users'].each do |username, attributes|
   user username do
