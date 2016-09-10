@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -u
+set -x
+
+<%- @services.each do |service| %>
+service "<%= service %>" restart
+<%- end %>

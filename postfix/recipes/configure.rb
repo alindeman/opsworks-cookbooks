@@ -8,33 +8,6 @@
 
 package "openssl"
 
-if node["postfix"]["ssl_certificate"] && node["postfix"]["ssl_key"]
-  ssl_certificate_file = "/etc/postfix/ssl.crt"
-  file ssl_certificate_file do
-    owner "root"
-    group "root"
-    mode "0644"
-
-    content Base64.decode64(node["postfix"]["ssl_certificate"])
-
-    notifies :restart, "service[postfix]"
-  end
-
-  ssl_key_file = "/etc/postfix/ssl.key"
-  file ssl_key_file do
-    owner "root"
-    group "root"
-    mode "0600"
-
-    content Base64.decode64(node["postfix"]["ssl_key"])
-
-    notifies :restart, "service[postfix]"
-  end
-else
-  ssl_certificate_file = nil
-  ssl_key_file = nil
-end
-
 dh_1024_param_file = "/etc/postfix/dh1024.pem"
 execute "generate dh1024 param file" do
   # yes, we use 2048 bits: http://www.postfix.org/FORWARD_SECRECY_README.html#quick-start
@@ -60,8 +33,8 @@ template "/etc/postfix/main.cf" do
     hostname:                  node["postfix"]["hostname"],
     domain:                    node["postfix"]["domain"],
     destinations:              node["postfix"]["destinations"],
-    ssl_certificate_file:      ssl_certificate_file,
-    ssl_key_file:              ssl_key_file,
+    ssl_certificate_file:      node["postfix"]["ssl_certificate_file"],
+    ssl_key_file:              node["postfix"]["ssl_key_file"],
     dh_1024_param_file:        dh_1024_param_file,
     dh_512_param_file:         dh_512_param_file,
     relay:                     node["postfix"]["relay"]

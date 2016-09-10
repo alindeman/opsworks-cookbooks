@@ -8,8 +8,8 @@ default["postfix"]["relay"] = false
 default["postfix"]["relay_username"] = nil
 default["postfix"]["relay_password"] = nil
 
-default["postfix"]["ssl_certificate"] = nil
-default["postfix"]["ssl_key"] = nil
+default["postfix"]["ssl_certificate_file"] = nil
+default["postfix"]["ssl_key_file"] = nil
 
 default["postfix"]["aliases"] = {}
 
