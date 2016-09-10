@@ -674,7 +674,7 @@ smtpd_tls_loglevel = 1
 smtpd_tls_protocols = !SSLv2, !SSLv3
 smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtpd_tls_ciphers = medium
-smtpd_tls_exclude_ciphers = EXPORT, LOW, MD5, SEED, IDEA, RC2
+smtpd_tls_exclude_ciphers = EXPORT, LOW, MD5, SEED, IDEA, RC2, RC4
 smtpd_tls_cert_file = <%= @ssl_certificate_file %>
 smtpd_tls_key_file = <%= @ssl_key_file %>
 <%- if @dh_1024_param_file %>
@@ -709,6 +709,7 @@ lmtp_tls_protocols = !SSLv2, !SSLv3
 lmtp_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtp_tls_security_level = encrypt
 smtp_tls_ciphers = medium
+smtp_tls_mandatory_ciphers = medium
 smtp_tls_exclude_ciphers = EXPORT, LOW, MD5, aDSS, kECDHe, kECDHr, kDHd, kDHr, SEED, IDEA, RC2
 header_size_limit = 4096000
 
