@@ -26,6 +26,6 @@ cron 'renew certbot certificates' do
   minute '15'
   hour '*/12'
   user 'root'
-  command "/usr/local/bin/certbot-auto renew --renew-hook=/usr/local/bin/certbot-restart-dependent-services"
+  command "/usr/local/bin/certbot-auto renew -n --renew-hook=/usr/local/bin/certbot-restart-dependent-services"
   action :create
 end
