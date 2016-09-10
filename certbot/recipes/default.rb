@@ -1,5 +1,5 @@
-remote_file '/usr/local/bin/certbot-auto' do
-  source 'https://dl.eff.org/certbot-auto'
+cookbook_file '/usr/local/bin/certbot-auto' do
+  source 'certbot-auto'
   owner 'root'
   group 'root'
   mode 00755
